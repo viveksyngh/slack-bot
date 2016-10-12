@@ -25,7 +25,7 @@ def handle_command(command, channel):
 before your message."
 	if command and channel:
 		wit_response = make_requests(command)
-		response_text = parse_converse_response(wit_response)
+		response_text = parse_converse_response(wit_response, channel)
 		if response_text == '':
 			response_text = response
 	else:

@@ -21,7 +21,7 @@ def make_requests(message):
 	return res
 
 
-def parse_wit_response(res):
+def parse_wit_response(res, channel):
 	response_text = ''
 	try:
 		response = json.loads(res.text)
@@ -33,13 +33,13 @@ def parse_wit_response(res):
 			tag = tags[0]
 			func = RESPONSE_FUNC_MAP.get(entity)
 			if func :
-				response_text = func(tag["value"])
+				response_text = func(tag["value"], channel)
 	except Exception :
 		pass
 	return response_text
 
 
-def parse_converse_response(res):
+def parse_converse_response(res, channel):
 	response_text = ''
 	try:
 		response = json.loads(res.text)
