@@ -3,6 +3,7 @@ import requests
 import json
 from slack_response import RESPONSE_FUNC_MAP
 from config import WIT_TOKEN
+from slack_response import app_deployment
 
 #TOKEN = os.environ.get('WIT_TOKEN')
 TOKEN = WIT_TOKEN
@@ -46,6 +47,8 @@ def parse_converse_response(res, channel):
 		if "type" in response:
 			if response["type"] == "msg":
 				response_text = response["msg"]
+				if "application_name" in response["entities"]:
+					return app_deployment(response["entities"]["application_name"][0]["value"], channel)
 			elif response["type"] == "stop":
 				response_text = ''
 	except Exception:

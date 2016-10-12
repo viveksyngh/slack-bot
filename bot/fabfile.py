@@ -98,7 +98,7 @@ def clone_repo(path, branch):
 	with cd(path):
 		with settings(warn_only=True):
 			run("git clone ssh://git@bitbucket.org/CavacServ9/happay_v2.git")
-			run("git fetch && git checkout %s"%(branch))
+			#run("git fetch && git checkout %s"%(branch))
 
 
 # def kar_path_create():
