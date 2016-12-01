@@ -30,6 +30,7 @@ before your message."
 			response_text = response
 	else:
 		response_text = response
+	print channel
 	slack_client.api_call("chat.postMessage", channel=channel,
 							  text=response_text, as_user=True)
 
