@@ -35,14 +35,15 @@ def send_error_message():
 elasticsearch server is down. Please login to server to fix the issue asap."
 	channel = CHANNEL
         slack_client.api_call("chat.postMessage", channel=channel, text=message, as_user=True)
-		
+
 
 def send_success_message(count):
 	slack_client = SlackClient(SLACK_BOT_TOKEN)
 	message = "Log server is doing great. It hase created {0} documents in last 15 min. Have a great day!!".format(count)
 	channel = CHANNEL
         slack_client.api_call("chat.postMessage", channel=channel, text=message, as_user=True)
-			
+
+
 def send_null_message():
 	slack_client = SlackClient(SLACK_BOT_TOKEN)
 	message = "Elastic search is running but It seems it has not received any logs is last 15 min.Try restarting logstash service."
